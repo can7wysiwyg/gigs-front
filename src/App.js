@@ -20,6 +20,7 @@ import TutorUpdateSubjectName from "./components/tutor/TutorUpdateSubjectName"
 import TutorUpdateSubjectPrice from "./components/tutor/TutorUpdateSubjectPrice"
 import TutorDeleteSubject from "./components/tutor/TutorDeleteSubject"
 import DeleteQualification from "./components/tutor/DeleteQualification"
+import Home from "./components/posts/Home"
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
           <Route path="/tutor_update_price/:id" element={<TutorUpdateSubjectPrice />} />
           <Route path="/tutor_delete_subject/:id" element={<TutorDeleteSubject />} />
           <Route path="/delete_qualification/:id" element={<DeleteQualification />} />
+          <Route path="/" element={<Home />} />
 
 
 
