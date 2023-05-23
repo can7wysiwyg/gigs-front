@@ -2,20 +2,51 @@ import axios from "axios";
 import { GlobalState } from "../../GlobalState";
 import "./home.css";
 import moment from "moment/moment";
+import _ from "lodash"
 const { useEffect, useContext, useState } = require("react");
+
+
+const pageSize = 3;
+
 
 function Home() {
   const [posts, setPosts] = useState([]);
+  const [paginated, setPaginated] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   useEffect(() => {
     const getPosts = async () => {
       const res = await axios.get("/subject/show_all");
 
       setPosts(res.data.subject);
+      setPaginated(_(res.data.subject).slice(0).take(pageSize).value());
+        
     };
 
     getPosts();
   }, []);
+
+  const pageCount = posts ? Math.ceil(posts.length / pageSize) : 0;
+
+
+
+  const pages = _.range(1, pageCount + 1);
+
+
+  const pagination = (pageNo) => {
+    setCurrentPage(pageNo)
+    const startIndex = (pageNo -1) * pageSize
+    const paginate = _(posts).slice(startIndex).take(pageSize).value()
+    setPaginated(paginate)
+
+
+  }
+
+
+
+
+
 
   if (posts.length === 0) {
     return (
@@ -29,9 +60,24 @@ function Home() {
 
   return (
     <>
-      {posts?.map((post, index) => (
+      {paginated?.map((post, index) => (
         <ShowOurPosts key={index} post={post} />
       ))}
+      <nav className="d-flex justify-content-center">
+        <ul className="pagination">
+          {pages.map((page, index) => (
+            <li
+              className={
+                page === currentPage ? "page-item active" : "page-item"
+              }
+              key={index}
+            >
+            <p className="page-link" onClick={() => pagination(page)} > {page} </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
     </>
   );
 }
@@ -140,7 +186,7 @@ const base64String =  window.btoa(
             </div>
             <div className="d-flex flex-row mt-1 ellipsis">
               {" "}
-              <small className="mr-2">{ moment(post.updatedAt).format('LT')}</small>{" "}
+              <small className="mr-2">{ moment(post.updatedAt).format('LLLL')}</small>{" "}
               
             </div>
           </div>{" "}

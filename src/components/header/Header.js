@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Navbar, Nav, Container, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import axios from "axios";
 import { GlobalState } from "../../GlobalState";
 
 
@@ -8,12 +9,33 @@ import { GlobalState } from "../../GlobalState";
 function Header() {
    
     const state = useContext(GlobalState);
-    // const token = state.token;
+    const token = state.token;
     const [isLogged] = state.userApi.isLogged;
     const [isUser] = state.userApi.isUser;
     // const [owner] = state.userApi.owner;
     const [isAdmin] = state.userApi.isAdmin;
+    const [user, setUser] = useState([]);
+    
+ 
 
+
+    useEffect(() => {
+      const getUser = async () => {
+        const res = await axios.get("/auth/user", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        setUser(res.data); }
+
+        getUser()
+      
+
+    }, [token])
+  
+  
+  
     const logoutUser = async () => {
         localStorage.removeItem('token')
     
@@ -22,6 +44,51 @@ function Header() {
     
       
       };
+
+      
+
+      function webName() {
+
+        if(isLogged !== true) {
+          return(<>
+          <LinkContainer to="/">
+            <Navbar.Brand>tutor-finder</Navbar.Brand>
+          </LinkContainer>
+
+          </>)
+
+
+        } else if(isLogged === true && Object.keys(user).length !== 15 ) {
+          return(<>
+          
+          <LinkContainer to="/">
+            <Navbar.Brand>{user.fullname}</Navbar.Brand>
+          </LinkContainer>
+          
+          </>)
+        } else if(isLogged === true) {
+
+          const picture = user.userImage.data.data ;
+
+     const base64String = window.btoa(
+    new Uint8Array(picture).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
+  );
+
+
+          return(<>
+          
+          <LinkContainer to="/">
+            <Navbar.Brand> <img src={`data:image/jpg;base64, ${base64String}`} alt={user.username} width="25" />  </Navbar.Brand>
+          </LinkContainer>
+          
+          </>)
+        }
+
+
+      }
 
       const loggedRouter = () => {
         return (
@@ -121,9 +188,7 @@ function Header() {
     <header>
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
-          <LinkContainer to="/">
-            <Navbar.Brand>tutor-finder</Navbar.Brand>
-          </LinkContainer>
+          {webName()}
           <Navbar.Toggle  />
           <Navbar.Collapse >
             
