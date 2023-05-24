@@ -51,14 +51,14 @@ const handleSubmit = async (event) => {
    <Container>
         <Row className="justify-content-md-center">
           <Col xs={12} md={6}>
-            <h1>Create Your Product</h1>
+      
             <Form onSubmit={handleSubmit} encType="multipart/form-data">
               <Form.Group className="mb-3" controlId="formBasicQualificationImage">
-                <Form.Label>upload your qualification image if available</Form.Label>
+                <Form.Label>upload your qualification image</Form.Label>
                 <Form.Control
                   type="file"
                   onChange={event => setQualificationImage(event.target.files[0])}
-                />
+                required/>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicQualification">

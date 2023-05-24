@@ -2,8 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Card, Col, Row } from 'react-bootstrap';
-
+import { Card, Col, Row } from "react-bootstrap";
 
 function MyTutoringService() {
   const state = useContext(GlobalState);
@@ -36,69 +35,45 @@ function MyTutoringService() {
     );
   }
 
-  return <div className="container">
-    <h1 style={{textAlign: "center"}}>my tutoring subjects</h1>
-    <div style={{padding: "10px" }}>
-    
-    <Row>
-  
-  {
-    subjects?.map((subject, index) => (
-        
-            <Col key={index} sm={12} md={6} lg={4} xl={3}   >
-
-        <DisplayMyServices subject={subject} />
-        </Col >
-
-
-        
-))
-  }
-
-  </Row>
-  </div>
-  
-  </div>;
+  return (
+    <div className="container">
+      <h1 style={{ textAlign: "center" }}>my tutoring subjects</h1>
+      <div style={{ padding: "10px" }}>
+        <Row>
+          {subjects?.map((subject, index) => (
+            <Col key={index} sm={12} md={6} lg={4} xl={3}>
+              <DisplayMyServices subject={subject} />
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </div>
+  );
 }
 
-
-const DisplayMyServices = ({subject}) => {
-    
-    return(<>
-    
-    <Card className="my-3 p-2 rounded   flex-fill h-100  "> 
-
-    <Card.Body>
-    <Card.Title as="p">
+const DisplayMyServices = ({ subject }) => {
+  return (
+    <>
+      <Card className="my-3 p-2 rounded   flex-fill h-100  ">
+        <Card.Body>
+          <Card.Title as="p">
             <strong>{subject.subjectName}</strong>
           </Card.Title>
 
           <Card.Text as="p">
             <strong>MK {subject.subjectPrice}</strong>
-
           </Card.Text>
 
           <Card.Text as="div">
             <strong>{subject.subjectCommentary}</strong>
-
           </Card.Text>
-          <Card.Link href={`/manage_subject/${subject._id}`}>manage subject </Card.Link>
-
-
-
-
-    </Card.Body>
-
-
-</Card>
-
-
-
-
-    
-    
-    
-    </>)
-}
+          <Card.Link href={`/manage_subject/${subject._id}`}>
+            manage subject{" "}
+          </Card.Link>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};
 
 export default MyTutoringService;

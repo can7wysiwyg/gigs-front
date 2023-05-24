@@ -21,6 +21,9 @@ import TutorUpdateSubjectPrice from "./components/tutor/TutorUpdateSubjectPrice"
 import TutorDeleteSubject from "./components/tutor/TutorDeleteSubject"
 import DeleteQualification from "./components/tutor/DeleteQualification"
 import Home from "./components/posts/Home"
+import PersonProfile from "./components/posts/PersonProfile"
+import SubjectsView from "./components/posts/SubjectsView"
+import QualificationsView from "./components/posts/QualificationsView"
 
 
 function App() {
@@ -30,7 +33,7 @@ function App() {
     <main className="py-3">
       <div className="container">
         <Routes>
-
+          <Route path="/" element={<Home />} /> 
           <Route path="/login" element={<Login />}  />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<ForgotPassword />} />
@@ -51,8 +54,10 @@ function App() {
           <Route path="/tutor_update_price/:id" element={<TutorUpdateSubjectPrice />} />
           <Route path="/tutor_delete_subject/:id" element={<TutorDeleteSubject />} />
           <Route path="/delete_qualification/:id" element={<DeleteQualification />} />
-          <Route path="/" element={<Home />} />
-
+          <Route path="/person_profile/:id" element={<PersonProfile />} />
+          <Route path="/subjects_view/:id" element={<SubjectsView />} />
+          <Route path="/qualifications_view/:id" element={<QualificationsView />} />
+          
 
 
           </Routes>

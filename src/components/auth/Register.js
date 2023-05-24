@@ -14,6 +14,8 @@ function Register() {
     securityAnswer: "",
   });
 
+  const[userImage, setUserImage] = useState("")
+
   
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,7 +25,19 @@ function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const res = await axios.post("/auth/register", { ...values });
+    let formData = new FormData();
+
+    formData.append("userImage", userImage)
+    formData.append("fullname", values.fullname)
+    formData.append("username", values.username)
+    formData.append("email", values.email)
+    formData.append("password", values.password)
+    formData.append("phoneNumber", values.phoneNumber)
+    formData.append("securityAnswer", values.securityAnswer)
+
+    
+
+    const res = await axios.post("/auth/register", formData);
 
     localStorage.setItem("firstLogin", true);
 
@@ -37,7 +51,16 @@ function Register() {
       <Row className="justify-content-md-center">
         <Col xs={12} md={6}>
           <h4>Register For An Account To Post For Your Tutoring Services </h4>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} encType="multipart/form-data">
+            <hr />
+          <Form.Group className="mb-3" controlId="formBasicUserImage">
+        <label>upload your profile picture</label>
+        <Form.Control
+          type="file"
+          onChange={event => setUserImage(event.target.files[0])}
+        />
+      </Form.Group>
+          
             <Form.Group className="mb-3" controlId="formBasicFullname">
               <Form.Control
                 type="text"
