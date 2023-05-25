@@ -24,6 +24,7 @@ import Home from "./components/posts/Home"
 import PersonProfile from "./components/posts/PersonProfile"
 import SubjectsView from "./components/posts/SubjectsView"
 import QualificationsView from "./components/posts/QualificationsView"
+import PostSingle from "./components/posts/PostSingle"
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route path="/person_profile/:id" element={<PersonProfile />} />
           <Route path="/subjects_view/:id" element={<SubjectsView />} />
           <Route path="/qualifications_view/:id" element={<QualificationsView />} />
+          <Route path="/post_single/:id" element={<PostSingle />} />
           
 
 

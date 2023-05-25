@@ -125,11 +125,11 @@ const ShowOurPosts = ({ post }) => {
           
             <div className="p-2">
             <h4 className="text-justify">
-                {post.subjectName}
+            <Link to={`/post_single/${post._id}`} style={{textDecorationLine: "none"}}>  {post.subjectName} </Link>
               </h4>
               <span className="text-justify">MK{post.subjectPrice}</span>
               <p className="text-justify">
-                {post.subjectCommentary}
+                {post.subjectCommentary }
               </p>
               <hr />
               <div className="d-flex justify-content-between align-items-center">
@@ -179,20 +179,16 @@ const base64String =  window.btoa(
               />
               <div className="d-flex flex-column ml-2">
                 {" "}
-                <span className="font-weight-bold"> <Link to={`/person_profile/${person._id}`} style={{textDecorationLine: "none"}}>  {person.fullname} </Link>  </span>{" "}
-                <small className="text-primary">tutor</small>{" "}
+                <span className="font-weight-bold">  {person.fullname}   </span>{" "}
+                <small className="text-primary">{ moment(post.updatedAt).format('LLLL')} </small>{" "}
               </div>
             </div>
-            <div className="d-flex flex-row mt-1 ellipsis">
-              {" "}
-              {/* <small className="mr-2">{ moment(post.updatedAt).format('LLLL')}</small>{" "} */}
-              
-            </div>
+            
           </div>{" "}
         
           <div className="p-2">
           <h4 className="text-justify">
-              {post.subjectName}
+             <Link to={`/post_single/${post._id}`} style={{textDecorationLine: "none"}}> {post.subjectName} </Link>
             </h4>
             <span className="text-justify">MK{post.subjectPrice}</span>
             <p className="text-justify">
