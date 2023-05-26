@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Card, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 function MyTutoringService() {
   const state = useContext(GlobalState);
@@ -52,26 +52,45 @@ function MyTutoringService() {
 }
 
 const DisplayMyServices = ({ subject }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpansion = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+
+  const {subjectCommentary} = subject
+
+  
+  const maxChars = 20
+
+  const shouldShowSeeMore = subjectCommentary.length > maxChars;
+
+
   return (
     <>
-      <Card className="my-3 p-2 rounded   flex-fill h-100  ">
-        <Card.Body>
-          <Card.Title as="p">
-            <strong>{subject.subjectName}</strong>
-          </Card.Title>
 
-          <Card.Text as="p">
-            <strong>MK {subject.subjectPrice}</strong>
-          </Card.Text>
+<div className="card" style={{width: "18rem"}}>
+  <div className="card-body">
+    <h5 className="card-title">{subject.subjectName}</h5>
+    <h6 className="card-subtitle mb-2 text-muted">MK{subject.subjectPrice}</h6>
+    <p className="card-text">
 
-          <Card.Text as="div">
-            <strong>{subject.subjectCommentary}</strong>
-          </Card.Text>
-          <Card.Link href={`/manage_subject/${subject._id}`}>
-            manage subject{" "}
-          </Card.Link>
-        </Card.Body>
-      </Card>
+    {isExpanded ? subjectCommentary : subjectCommentary.slice(0, maxChars)}
+        {shouldShowSeeMore && (
+          <span onClick={toggleExpansion}>
+            {isExpanded ? `` : <a href={`/post_single/${subject._id}`}>see more</a> }
+          </span>
+        )}
+
+    </p>
+    <a href={`/person_profile/${subject.subjectOwner}`} className="card-link">back to profile</a>
+    
+  </div>
+</div>
+
+
+
     </>
   );
 };

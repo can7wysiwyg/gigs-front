@@ -88,6 +88,13 @@ const ShowOurPosts = ({ post }) => {
   const [users] = state.usersApi.users;
   const [person, setPerson] = useState({});
 
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpansion = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+
   useEffect(() => {
     if (post.subjectOwner) {
        
@@ -162,6 +169,13 @@ const base64String =  window.btoa(
       .reduce((data, byte) => data + String.fromCharCode(byte), '')
   );
 
+  const {subjectCommentary} = post
+  const maxChars = 20
+
+  const shouldShowSeeMore = subjectCommentary.length > maxChars;
+
+
+
         return(<>
         
         
@@ -192,7 +206,14 @@ const base64String =  window.btoa(
             </h4>
             <span className="text-justify">MK{post.subjectPrice}</span>
             <p className="text-justify">
-              {post.subjectCommentary}
+            
+            {isExpanded ? subjectCommentary : subjectCommentary.slice(0, maxChars)}
+        {shouldShowSeeMore && (
+          <span onClick={toggleExpansion}>
+            {isExpanded ? `` : <a href={`/post_single/${post._id}`}>see more</a> }
+          </span>
+        )}
+
             </p>
             <hr />
             <div className="d-flex justify-content-between align-items-center">

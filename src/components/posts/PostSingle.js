@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 
 
 function PostSingle() {
     const{id} = useParams()
-    // const [posts, setPosts] = useState([]);
+    
     const[single, setSingle] = useState([])
-    const[readMore] = useState(false);
+    
 
 
     useEffect(() => {
@@ -39,8 +39,6 @@ function PostSingle() {
           <Card.Title as="h1">{subjectName}</Card.Title>
           <Card.Text as="h4">price: {subjectPrice}</Card.Text>
           <Card.Text as="p"> { subjectCommentary  }</Card.Text>
-          
-
         <Card.Link href={`/person_profile/${single.subjectOwner}`} className="d-block p-2">
             view tutor{" "}
           </Card.Link>
