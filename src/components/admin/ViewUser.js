@@ -3,8 +3,10 @@ import "./personProfile.css";
 import { GlobalState } from "../../GlobalState";
 import { Link, useParams } from "react-router-dom";
 
-function PersonProfile() {
-  
+
+
+function ViewUser() {
+
     const[user, setUser] = useState({})
     const state = useContext(GlobalState)
     const[users] = state.usersApi.users
@@ -39,12 +41,10 @@ const base64String = window.btoa(
 
 
 
-    
 
-    
-  return (
-    <>
-      <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    return(<>
+
+<div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
         <div className="card p-4">
           <div className=" image d-flex flex-column justify-content-center align-items-center">
             <button className="btn btn-secondary">
@@ -59,7 +59,12 @@ const base64String = window.btoa(
             <span className="name mt-3">{user.fullname}</span>
             <span className=" mt-3">  <i className="fa fa-phone"></i> {user.phoneNumber}</span>
             <span className=" mt-3">  <i className="fa fa-envelope"></i> {user.email}</span>
-         <Link to={`/qualifications_view/${user._id}`} style={{textDecorationLine: "none"}}>   <span className="idd">Qualifications</span> </Link>
+         <Link to={`/qualifications_view/${user._id}`} style={{textDecorationLine: "none"}}> 
+           <span className="idd">Qualifications</span> </Link>
+
+           <Link to={`/delete_user/${user._id}`} style={{textDecorationLine: "none"}}> 
+           <span className="idd">Delete User</span> </Link>
+
             <div className="d-flex flex-row justify-content-center align-items-center gap-2">
             </div>{" "}
             <div className="d-flex flex-row justify-content-center align-items-center mt-3">
@@ -89,8 +94,9 @@ const base64String = window.btoa(
           </div>{" "}
         </div>
       </div>
-    </>
-  );
+    
+    
+    </>)
 }
 
-export default PersonProfile;
+export default ViewUser

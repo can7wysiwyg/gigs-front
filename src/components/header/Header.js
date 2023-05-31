@@ -158,9 +158,9 @@ function Header() {
 
         return(
             <NavItem>
-              <LinkContainer to="/our_users">
+              <LinkContainer to="/my_users">
                 <Nav.Link>
-                our users
+                Our Users
                 </Nav.Link>
                 
                 </LinkContainer>

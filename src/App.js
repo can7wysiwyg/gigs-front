@@ -25,6 +25,9 @@ import PersonProfile from "./components/posts/PersonProfile"
 import SubjectsView from "./components/posts/SubjectsView"
 import QualificationsView from "./components/posts/QualificationsView"
 import PostSingle from "./components/posts/PostSingle"
+import MyUsers from "./components/admin/MyUsers"
+import ViewUser from "./components/admin/ViewUser"
+import DeleteUser from "./components/admin/DeleteUser"
 
 
 function App() {
@@ -59,6 +62,10 @@ function App() {
           <Route path="/subjects_view/:id" element={<SubjectsView />} />
           <Route path="/qualifications_view/:id" element={<QualificationsView />} />
           <Route path="/post_single/:id" element={<PostSingle />} />
+          <Route path="/my_users" element={<MyUsers />} />
+          <Route path="/view_user/:id" element={<ViewUser />} />
+          <Route path="/delete_user/:id" element={<DeleteUser />} />
+
           
 
 
