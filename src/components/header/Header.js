@@ -12,7 +12,7 @@ function Header() {
     const token = state.token;
     const [isLogged] = state.userApi.isLogged;
     const [isUser] = state.userApi.isUser;
-    // const [owner] = state.userApi.owner;
+    // const [isSuspended] = state.userApi.isSuspended;
     const [isAdmin] = state.userApi.isAdmin;
     const [user, setUser] = useState([]);
     
@@ -33,8 +33,8 @@ function Header() {
       
 
     }, [token])
-  
-  
+ 
+    
   
     const logoutUser = async () => {
         localStorage.removeItem('token')
@@ -169,19 +169,57 @@ function Header() {
         )
       }
 
+//       const susRoute = () => {
+// if(user.role === 1) {
+
+//   return(<>
+//   <NavItem>
+//               <LinkContainer to="/appeal">
+//                 <Nav.Link>
+//                 Write An Appeal
+//                 </Nav.Link>
+                
+//                 </LinkContainer>
+//             </NavItem>
+
+  
+//   </>)
+// }
+        
+          
+        
+      
+      // }
+
+
+      
       
 
       const figureOut = () => {
+        if(isUser && user.role === 1) {
+          return(<>
+          <NavItem>
+              <LinkContainer to="/appeal">
+                <Nav.Link>
+                my appeal
+                </Nav.Link>
+                
+                </LinkContainer>
+            </NavItem>
 
-        if(isUser) {
+          
+          </>)
+        }
+         else if(isUser) {
             return userRouter()
         } else if(isAdmin) {
             return adminRoute()
-        }
+        }   
 
 
       }
 
+     
 
 
     return(<>

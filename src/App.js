@@ -28,16 +28,65 @@ import PostSingle from "./components/posts/PostSingle"
 import MyUsers from "./components/admin/MyUsers"
 import ViewUser from "./components/admin/ViewUser"
 import DeleteUser from "./components/admin/DeleteUser"
+import TheFallen from "./components/tutor/TheFallen"
+import { useContext, useEffect, useState } from "react"
+import { GlobalState } from "./GlobalState"
+import axios from "axios"
+
 
 
 function App() {
+  const state = useContext(GlobalState)
+  const token = state.token
+  const [isLogged] = state.userApi.isLogged;
+  const[user, setUser] = useState({})
+
+  useEffect(() => {
+    const getUser = async() => {
+
+      const res = await axios.get("/auth/user", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      setUser(res.data)
+
+    }
+
+    getUser()
+
+  }, [token])
+
+  
+  
+
+  if(user.role ===  1 && isLogged === true) {
+    return(<>
+    <Router>
+      <Header />
+      <main className="py-3">
+      <div className="container">
+      <TheFallen />
+       
+          </div>
+          </main>
+
+
+    </Router>
+
+    
+    </>)
+  }
+
+  
   return(<>
   <Router>
     <Header />
     <main className="py-3">
       <div className="container">
         <Routes>
-          <Route path="/" element={<Home />} /> 
+         <Route path="/" element={<Home />} /> 
           <Route path="/login" element={<Login />}  />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot" element={<ForgotPassword />} />
@@ -65,6 +114,8 @@ function App() {
           <Route path="/my_users" element={<MyUsers />} />
           <Route path="/view_user/:id" element={<ViewUser />} />
           <Route path="/delete_user/:id" element={<DeleteUser />} />
+          {/* <Route path="/the_fallen" element={<TheFallen />} /> */}
+          
 
           
 

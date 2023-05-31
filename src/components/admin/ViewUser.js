@@ -21,7 +21,7 @@ function ViewUser() {
 
     }, [id, users])
 
-  
+console.log(users);  
     
 if(Object.keys(user).length <= 0 ) {
     return(<>
