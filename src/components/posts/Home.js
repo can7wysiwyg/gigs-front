@@ -159,7 +159,7 @@ const ShowOurPosts = ({ post }) => {
   
       }
 
-
+     
       if(Object.keys(person).length > 14) {
 
         const picture = person.userImage.data.data
@@ -179,7 +179,7 @@ const base64String =  window.btoa(
         return(<>
         
         
-        <div className="row d-flex align-items-center justify-content-center">
+  { person.role === 0 ?     <div className="row d-flex align-items-center justify-content-center">
       <div className="col-md-6">
         <div className="card">
           <div className="d-flex justify-content-between p-2 px-3">
@@ -231,10 +231,10 @@ const base64String =  window.btoa(
           </div>
         </div>
       </div>
-    </div>
+    </div> : <div style={{display: "none"}} >  </div>
 
         
-        
+        }     
         
         
         </>)

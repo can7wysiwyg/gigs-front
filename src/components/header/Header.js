@@ -58,14 +58,6 @@ function Header() {
           </>)
 
 
-        } else if(isLogged === true && Object.keys(user).length !== 15 ) {
-          return(<>
-          
-          <LinkContainer to="/">
-            <Navbar.Brand>{user.fullname}</Navbar.Brand>
-          </LinkContainer>
-          
-          </>)
         } else if(isLogged === true) {
 
           const picture = user.userImage.data.data ;
@@ -169,30 +161,6 @@ function Header() {
         )
       }
 
-//       const susRoute = () => {
-// if(user.role === 1) {
-
-//   return(<>
-//   <NavItem>
-//               <LinkContainer to="/appeal">
-//                 <Nav.Link>
-//                 Write An Appeal
-//                 </Nav.Link>
-                
-//                 </LinkContainer>
-//             </NavItem>
-
-  
-//   </>)
-// }
-        
-          
-        
-      
-      // }
-
-
-      
       
 
       const figureOut = () => {

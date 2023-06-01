@@ -7,7 +7,6 @@ function UserApi() {
 
     const [isLogged, setIsLogged] = useState(false)
     const [isUser, setIsUser] = useState(false)
-    // const[isSuspended, setIsSuspended] = useState(false)
     const [isAdmin, setIsadmin] = useState(false)
     const [owner, setOwner] = useState('')
 
@@ -26,7 +25,6 @@ function UserApi() {
 
                 res.data.admin === 1 ? setIsadmin(true) : setIsadmin(false)
                 res.data.admin === 0 ? setIsUser(true) : setIsUser(false)
-                // res.data.role === 1 ? setIsSuspended(true) : setIsSuspended(false)
                 setOwner(res.data.fullname)
 
 
@@ -46,8 +44,7 @@ function UserApi() {
         owner: [owner, setOwner],
         isAdmin: [isAdmin, setIsadmin],
         isUser: [isUser, setIsUser],
-        // isSuspended: [isSuspended, setIsSuspended]
-
+        
     }
 }
 
