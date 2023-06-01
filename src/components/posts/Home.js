@@ -160,7 +160,7 @@ const ShowOurPosts = ({ post }) => {
       }
 
      
-      if(Object.keys(person).length > 14) {
+      if(Object.keys(person).length <=  100) {
 
         const picture = person.userImage.data.data
 
@@ -174,12 +174,11 @@ const base64String =  window.btoa(
 
   const shouldShowSeeMore = subjectCommentary.length > maxChars;
 
-
-
+  
         return(<>
         
         
-  { person.role === 0 ?     <div className="row d-flex align-items-center justify-content-center">
+    <div className="row d-flex align-items-center justify-content-center">
       <div className="col-md-6">
         <div className="card">
           <div className="d-flex justify-content-between p-2 px-3">
@@ -231,12 +230,7 @@ const base64String =  window.btoa(
           </div>
         </div>
       </div>
-    </div> : <div style={{display: "none"}} >  </div>
-
-        
-        }     
-        
-        
+    </div>           
         </>)
       }
   
