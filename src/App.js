@@ -32,6 +32,7 @@ import TheFallen from "./components/tutor/TheFallen"
 import { useContext, useEffect, useState } from "react"
 import { GlobalState } from "./GlobalState"
 import axios from "axios"
+import ItemsFromCat from "./components/posts/ItemsFromCat"
 
 
 
@@ -114,7 +115,7 @@ function App() {
           <Route path="/my_users" element={<MyUsers />} />
           <Route path="/view_user/:id" element={<ViewUser />} />
           <Route path="/delete_user/:id" element={<DeleteUser />} />
-          {/* <Route path="/the_fallen" element={<TheFallen />} /> */}
+          <Route path="/items_from_cat/:id" element={<ItemsFromCat />} />
           
 
           

@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { Navbar, Nav, Container, NavItem } from 'react-bootstrap';
+import { Navbar, Nav,   Container, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from "axios";
 import { GlobalState } from "../../GlobalState";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,9 +13,38 @@ function Header() {
     const token = state.token;
     const [isLogged] = state.userApi.isLogged;
     const [isUser] = state.userApi.isUser;
-    // const [isSuspended] = state.userApi.isSuspended;
     const [isAdmin] = state.userApi.isAdmin;
     const [user, setUser] = useState([]);
+    const[categories, setCategories] = useState([])
+    const navigate = useNavigate()
+
+    useEffect(() => {
+
+      const getCats = async() => {
+      
+        const res = await axios.get('/admin/show_categories')
+      
+        setCategories(res.data.results);
+      
+      }
+      
+      getCats()
+      
+      
+      }, [])
+      
+      const handleCategory = (event) => {
+    console.log(event.target.value);
+    
+        navigate(`/items_from_cat/${event.target.value}`)
+    
+      }
+       
+    
+    
+      
+  
+  
     
  
 
@@ -203,7 +233,20 @@ function Header() {
               
                   {figureOut()}
         
-        
+                  <select name="categories" value={categories}  onChange={handleCategory} >
+                    <option value=''>All Categories</option>
+                    {
+                        categories?.map(categor => (
+                            <option value={ categor._id} key={categor._id}>
+                                {categor.catName}
+                            </option>
+                        ))
+                    }
+                </select>
+
+             
+
+
         { isLogged ? (
           loggedRouter()
         ) : (

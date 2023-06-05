@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
@@ -10,12 +10,31 @@ function PostATutorService() {
     subjectName: "",
     subjectPrice: "",
     subjectCommentary: "",
+    subjectCategory: ""
   });
+
+  const[categories, setCategories] = useState([])
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
+
+useEffect(() => {
+
+const getCats = async() => {
+
+  const res = await axios.get('/admin/show_categories')
+
+  setCategories(res.data.results);
+
+}
+
+getCats()
+
+
+}, [])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +51,9 @@ function PostATutorService() {
 
     window.location.href = "/my_services";
   };
+
+
+
 
   return (
     <>
@@ -59,8 +81,29 @@ function PostATutorService() {
                 />
               </Form.Group>
 
+              <Form.Group className="mb-3" controlId="formBasicCategories">
+                <Form.Label>select subject category</Form.Label>
+                <Form.Select
+                  name="subjectCategory"
+                  value={values.subjectCategory}
+                  onChange={handleChange}
+                >
+                  <option value="">Please select a category</option>
+                  {categories.map((category) => (
+                    <option value={category._id} key={category._id}>
+                      {category.catName}
+                    </option>
+                  ))}
+                </Form.Select>
+              </Form.Group>
+            
+
+
               <Form.Group className="mb-3" controlId="formBasicLinkedInLink">
-                <label>*optional</label>
+
+
+
+              
                 <Form.Control
                 
                   as="textarea"
