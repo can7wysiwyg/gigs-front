@@ -27,7 +27,10 @@ useEffect(() => {
 
 if(posts.length === 0) {
     return(<>
-    <h1 style={{textAlign: "center"}}>posts are loading 😏😏😏😍</h1>
+    <h1 className="text-center"> hmm two things... </h1>
+    <h1 style={{textAlign: "center"}}>posts are loading 😏😏😏😍 or</h1>
+    <h2 style={{textAlign: "center"}}> this category has no posts as of yet...</h2>
+    <img src="https://www.singulart.com/images/artworks/v2/cropped/27721/main/zoom/1799638_de40de4b95ae502bf8695248595c2a60.jpeg" className="img-fluid" alt="daffy duck" />
     </>)
 } 
 

@@ -179,7 +179,8 @@ function Header() {
       const adminRoute = () => {
 
         return(
-            <NavItem>
+          <Nav>         
+               <NavItem>
               <LinkContainer to="/my_users">
                 <Nav.Link>
                 Our Users
@@ -187,6 +188,28 @@ function Header() {
                 
                 </LinkContainer>
             </NavItem>
+
+            <NavItem>
+              <LinkContainer to="/create_category">
+                <Nav.Link>
+                Create Categories
+                </Nav.Link>
+                
+                </LinkContainer>
+            </NavItem>
+
+            <NavItem>
+              <LinkContainer to="/category_list">
+                <Nav.Link>
+                Manage Categories
+                </Nav.Link>
+                
+                </LinkContainer>
+            </NavItem>
+
+
+            </Nav>
+
 
         )
       }

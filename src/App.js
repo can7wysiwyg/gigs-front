@@ -33,6 +33,8 @@ import { useContext, useEffect, useState } from "react"
 import { GlobalState } from "./GlobalState"
 import axios from "axios"
 import ItemsFromCat from "./components/posts/ItemsFromCat"
+import CreateCategory from "./components/admin/CreateCategory"
+import CategoryList from "./components/admin/CategoryList"
 
 
 
@@ -116,6 +118,8 @@ function App() {
           <Route path="/view_user/:id" element={<ViewUser />} />
           <Route path="/delete_user/:id" element={<DeleteUser />} />
           <Route path="/items_from_cat/:id" element={<ItemsFromCat />} />
+          <Route path="/create_category" element={<CreateCategory />} />
+          <Route path="/category_list" element={<CategoryList />} />
           
 
           

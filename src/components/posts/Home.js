@@ -3,7 +3,7 @@ import { GlobalState } from "../../GlobalState";
 import "./home.css";
 import moment from "moment/moment";
 import _ from "lodash"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 const { useEffect, useContext, useState } = require("react");
 
 
@@ -16,25 +16,9 @@ function Home() {
  
 
   const [currentPage, setCurrentPage] = useState(1);
-  const[categories, setCategories] = useState([])
-  const navigate = useNavigate()
 
 
-  useEffect(() => {
 
-    const getCats = async() => {
-    
-      const res = await axios.get('/admin/show_categories')
-    
-      setCategories(res.data.results);
-    
-    }
-    
-    getCats()
-    
-    
-    }, [])
-    
     
 
 
@@ -83,26 +67,10 @@ function Home() {
     );
   }
 
-  const handleCategory = (event) => {
-    
-    
-    navigate(`/items_from_cat/${event.target.value}`)
-
-  }
-
+  
   return (
     <>
-    <select name="categories" value={categories} onChange={handleCategory} >
-                    <option value=''>All Categories</option>
-                    {
-                        categories?.map(categor => (
-                            <option value={ categor._id} key={categor._id}>
-                                {categor.catName}
-                            </option>
-                        ))
-                    }
-                </select>
-
+   
     
       {paginated?.map((post, index) => (
         <ShowOurPosts key={index} post={post} />
