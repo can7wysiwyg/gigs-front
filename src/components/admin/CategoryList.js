@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useContext,  useState, useEffect } from "react";
 import { GlobalState } from "../../GlobalState";
-
 import "./categoryList.css"
+import { useNavigate } from "react-router-dom";
 
 function CategoryList() {
 
@@ -29,13 +29,12 @@ function CategoryList() {
 
     }, [token])
 
-const deleteCategory = async (item) => {
+    if(myCats.length === 0) {
+        return(<>
+        <h1 className="text-center">category list is empty</h1>
+        </>)
+    }
 
-    
-
-
-
-}
     
 
     return(<>
@@ -46,8 +45,8 @@ const deleteCategory = async (item) => {
                         <div className="row" key={category._id}>
                             <p>{category.catName}</p>
                             <div>
-                        
-                                <button >Delete</button>
+                        <DeleteButon id={category._id} />
+                               
                             </div>
                         </div>
                     ))
@@ -61,6 +60,27 @@ const deleteCategory = async (item) => {
     
     
     </>)
+}
+
+const DeleteButon = ({id}) => {
+
+    const state = useContext(GlobalState);
+    const token = state.token;
+    const navigate = useNavigate()
+
+    const deleteButton = async() => {
+        await axios.delete(`/admin/delete_category/${id}`, {headers: {
+            Authorization: `Bearer ${token}`
+        }})
+
+        navigate('/category_list')
+    }
+
+return(<>
+ <button onClick={deleteButton} >Delete</button>
+
+</>)
+
 }
 
 export default CategoryList
