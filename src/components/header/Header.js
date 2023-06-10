@@ -34,7 +34,7 @@ function Header() {
       }, [])
       
       const handleCategory = (event) => {
-    console.log(event.target.value);
+    
     
         navigate(`/items_from_cat/${event.target.value}`)
     

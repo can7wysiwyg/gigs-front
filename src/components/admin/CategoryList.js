@@ -68,6 +68,7 @@ const DeleteButon = ({id}) => {
     const token = state.token;
     const navigate = useNavigate()
     const [posts, setPosts] = useState([]);
+    const[singular, setSingular] = useState([])
 
 
 useEffect(() => {
@@ -82,58 +83,35 @@ useEffect(() => {
     getPosts();
   }, []);
 
+  useEffect(() => {
+
+ if(id) {
+    posts?.forEach((ost) => {
+        if(ost.subjectCategory === id) setSingular(ost)
+    })
+ }
+
+
+  }, [id, posts])
+
 
     const deleteButton = async() => {
 
-    
-                     axios.delete(`/admin/delete_category/${id}`, {headers: {
-                        Authorization: `Bearer ${token}`
-                    }})
-            
-                    navigate('/category_list')
-        
-                    
-                
-           
+        await axios.delete(`/admin/delete_category/${id}`, {headers: {
+            Authorization: `Bearer ${token}`
+        }})
+
+        navigate('/category_list')
 
 
-                              
-                
-           
-
-                    // ends here
-
-                
-            
-            
-
-        
+ 
        
     }
 
-    const checkIfCat = async() => {
-
-        if(id) {
-            posts.forEach((post) => {
-                if(post.subjectCategory !== id) {
-                    alert("you can delete this category because does not have products")
-                }
-            })
-        } if(id) {
-            posts.forEach((post) => {
-                if(post.subjectCategory === id) {
-                    alert("you cannot delete this category because it has products")
-                }
-            })
-
-
-        }
-
-    }
 
 return(<>
-<button onClick={checkIfCat} data-toggle="tooltip" data-placement="top" title="this button checks to see if a category has posts. if it has posts, do not delete.">check</button>
- <button onClick={deleteButton} >Delete</button>
+
+{ singular.subjectCategory === id ? "" : <button onClick={deleteButton} >Delete</button> }
 
 </>)
 

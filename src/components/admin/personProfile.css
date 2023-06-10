@@ -1,67 +1,83 @@
-
-
-.card {
-    width: 350px;
-    background-color: #efefef;
-    border: none;
-    cursor: pointer;
-    transition: all 0.5s;
+body{
+    background:#eee;
 }
 
-.image img {
-    transition: all 0.5s
+.card{
+    border:none;
+
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-.card:hover .image img {
-    transform: scale(1.5)
+.card:before{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#E1BEE7;
+    transform:scaleY(1);
+    transition:all 0.5s;
+    transform-origin: bottom
 }
 
-.name {
-    font-size: 22px;
-    font-weight: bold
-} 
-
- .idd {
-    font-size: 14px;
-    font-weight: 600
+.card:after{
+    
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#8E24AA;
+    transform:scaleY(0);
+    transition:all 0.5s;
+    transform-origin: bottom
 }
 
-.idd1 {
-    font-size: 12px
-}
-
-.number {
-    font-size: 22px;
-    font-weight: bold
-}
-
-.follow {
-    font-size: 12px;
-    font-weight: 500;
-    color: #444444
+.card:hover::after{
+    transform:scaleY(1);
 }
 
 
-.text span {
-    font-size: 13px;
-    color: #545454;
-    font-weight: 500
+.fonts{
+    font-size:11px;
 }
 
-.icons i {
-    font-size: 19px
+.social-list{
+    display:flex;
+    list-style:none;
+    justify-content:center;
+    padding:0;
 }
 
-hr .new1 {
-    border: 1px solid
+.social-list li{
+    padding:10px;
+    color:#8E24AA;
+    font-size:19px;
 }
 
-.join {
-    font-size: 14px;
-    color: #a0a0a0;
-    font-weight: bold
+
+.buttons button:nth-child(1){
+       border:1px solid #8E24AA !important;
+       color:#8E24AA;
+       height:40px;
 }
 
-.date {
-    background-color: #ccc
+.buttons button:nth-child(1):hover{
+       border:1px solid #8E24AA !important;
+       color:#fff;
+       height:40px;
+       background-color:#8E24AA;
+}
+
+.buttons button:nth-child(2){
+       border:1px solid #8E24AA !important;
+       background-color:#8E24AA;
+       color:#fff;
+        height:40px;
 }

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./personProfile.css";
 import { GlobalState } from "../../GlobalState";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 
 
@@ -21,7 +21,7 @@ function ViewUser() {
 
     }, [id, users])
 
-console.log(users);  
+
     
 if(Object.keys(user).length <= 0 ) {
     return(<>
@@ -44,56 +44,60 @@ const base64String = window.btoa(
 
     return(<>
 
-<div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
-        <div className="card p-4">
-          <div className=" image d-flex flex-column justify-content-center align-items-center">
-            <button className="btn btn-secondary">
-              {" "}
-              <img
-                src={`data:image/jpg;base64, ${base64String}`}
-                alt="profilePic"
-                height="100"
-                width="100"
-              />
-            </button>
-            <span className="name mt-3">{user.fullname}</span>
-            <span className=" mt-3">  <i className="fa fa-phone"></i> {user.phoneNumber}</span>
-            <span className=" mt-3">  <i className="fa fa-envelope"></i> {user.email}</span>
-         <Link to={`/qualifications_view/${user._id}`} style={{textDecorationLine: "none"}}> 
-           <span className="idd">Qualifications</span> </Link>
+<div className="container mt-4 mb-4 p-4 d-flex justify-content-center">
+    
+    <div >
+        
+        <div className="col-md-7">
+            
+            <div className="card p-3 py-4">
+                
+                <div className="text-center">
+                    <img src={`data:image/jpg;base64, ${base64String}`} alt="imagio" width="100" className="rounded-circle" />
+                </div>
+                
+                <div className="text-center mt-3">
+                   
+                    <h5 className="mt-2 mb-0"> {user.fullname} </h5>
+                    <span>{user.email}</span>
+                    
+                    <p className="mt-2 mb-0">{user.phoneNumber}</p>
 
-           <Link to={`/delete_user/${user._id}`} style={{textDecorationLine: "none"}}> 
-           <span className="idd">Delete User</span> </Link>
+                    
+                    
+                     <ul className="social-list">
+                        <li>  <a href={user.facebookLink}> <i className="fa fa-facebook-f"></i> </a>  </li>
+                        <li>  <a href={`https://wa.me/${user.whatsappLink}`}>  <i className="fa fa-whatsapp"></i> </a> </li>
+                        <li>  <a href={user.linkedInLink}>  <i className="fa fa-linkedin"></i> </a>   </li>
+                        <li> <a href={user.twitterLink}>  <i className="fa fa-twitter"></i> </a>  </li>
+                       
+                    </ul>
+                   
+                    <div className=" buttons">
+                  
+                        <button className="btn btn-outline-primary px-4"  data-toggle="modal" data-target="#exampleModalCenter"      >More Info</button>
+                        <button className="btn btn-primary px-4 ms-3">Manage User</button>
 
-            <div className="d-flex flex-row justify-content-center align-items-center gap-2">
-            </div>{" "}
-            <div className="d-flex flex-row justify-content-center align-items-center mt-3">
-             <Link to={`/subjects_view/${user._id}`} style={{textDecorationLine: "none"}}> <span className="number">
-                Tutor's Subjects 
-              </span>
-              </Link>
-            </div>
                       
-                      
-             <div className="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
-              {" "}
-              <span>
-              <a href={user.twitterLink}>  <i className="fa fa-twitter"></i> </a>
-              </span>{" "}
-              <span>
-              <a href={user.facebookLink}> <i className="fa fa-facebook-f"></i> </a>
-              </span>{" "}
-              <span>
-              <a href={`https://wa.me/${user.whatsappLink}`}>  <i className="fa fa-whatsapp"></i> </a>
-              </span>{" "}
-              <span>
-              <a href={user.linkedInLink}>  <i className="fa fa-linkedin"></i> </a>
-              </span>{" "}
-            </div>{" "}
+                    </div>
           
-          </div>{" "}
+
+              
+                    
+                </div>
+                
+               
+                
+                
+            </div>
+            
         </div>
-      </div>
+        
+    </div>
+    
+</div>
+
+
     
     
     </>)
