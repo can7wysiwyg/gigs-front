@@ -1,8 +1,8 @@
-body{
+.body{
     background:#eee;
 }
 
-.card{
+.blanket{
     border:none;
 
     position:relative;
@@ -11,7 +11,7 @@ body{
     cursor:pointer;
 }
 
-.card:before{
+.blanket:before{
     
     content:"";
     position:absolute;
@@ -25,7 +25,7 @@ body{
     transform-origin: bottom
 }
 
-.card:after{
+.blanket:after{
     
     content:"";
     position:absolute;
@@ -39,7 +39,7 @@ body{
     transform-origin: bottom
 }
 
-.card:hover::after{
+.blanket:hover::after{
     transform:scaleY(1);
 }
 
@@ -62,20 +62,20 @@ body{
 }
 
 
-.buttons button:nth-child(1){
+.butts button:nth-child(1){
        border:1px solid #8E24AA !important;
        color:#8E24AA;
        height:40px;
 }
 
-.buttons button:nth-child(1):hover{
+.butts button:nth-child(1):hover{
        border:1px solid #8E24AA !important;
        color:#fff;
        height:40px;
        background-color:#8E24AA;
 }
 
-.buttons button:nth-child(2){
+.butts button:nth-child(2){
        border:1px solid #8E24AA !important;
        background-color:#8E24AA;
        color:#fff;

@@ -35,6 +35,7 @@ import axios from "axios"
 import ItemsFromCat from "./components/posts/ItemsFromCat"
 import CreateCategory from "./components/admin/CreateCategory"
 import CategoryList from "./components/admin/CategoryList"
+import MoreInfo from "./components/admin/MoreInfo"
 
 
 
@@ -120,6 +121,7 @@ function App() {
           <Route path="/items_from_cat/:id" element={<ItemsFromCat />} />
           <Route path="/create_category" element={<CreateCategory />} />
           <Route path="/category_list" element={<CategoryList />} />
+          <Route path="/more_info/:id" element={<MoreInfo />} />
           
 
           

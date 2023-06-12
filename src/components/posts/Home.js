@@ -123,7 +123,7 @@ const ShowOurPosts = ({ post }) => {
   
   <div className="row d-flex align-items-center justify-content-center">
         <div className="col-md-6">
-          <div className="card">
+          <div className="mycard">
             <div className="d-flex justify-content-between p-2 px-3">
               <div className="d-flex flex-row align-items-center">
                 {" "}
@@ -191,7 +191,7 @@ const base64String =  window.btoa(
         
     <div className="row d-flex align-items-center justify-content-center">
       <div className="col-md-6">
-        <div className="card">
+        <div className="mycard">
           <div className="d-flex justify-content-between p-2 px-3">
             <div className="d-flex flex-row align-items-center">
               {" "}

@@ -31,7 +31,7 @@ function PostSingle() {
     
       
     return(<>
-    <div className="col-md-6 mx-auto text-center">
+    <div className="col-md-6 mx-auto d-flex justify-content-center">
     
    <Card>
         

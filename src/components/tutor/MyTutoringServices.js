@@ -41,7 +41,7 @@ function MyTutoringService() {
       <div style={{ padding: "10px" }}>
         <Row>
           {subjects?.map((subject, index) => (
-            <Col key={index} sm={12} md={6} lg={4} xl={3}>
+            <Col key={index} sm={4} >
               <DisplayMyServices subject={subject} />
             </Col>
           ))}
@@ -70,7 +70,7 @@ const DisplayMyServices = ({ subject }) => {
   return (
     <>
 
-<div className="card" style={{width: "18rem"}}>
+<div className="card" >
   <div className="card-body">
     <h5 className="card-title">{subject.subjectName}</h5>
     <h6 className="card-subtitle mb-2 text-muted">MK{subject.subjectPrice}</h6>

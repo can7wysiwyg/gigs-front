@@ -44,13 +44,13 @@ const base64String = window.btoa(
 
     return(<>
 
-<div className="container mt-4 mb-4 p-4 d-flex justify-content-center">
+<div className="container mt-4 mb-4 p-4 d-flex justify-content-center body">
     
     <div >
         
         <div className="col-md-7">
             
-            <div className="card p-3 py-4">
+            <div className="card p-3 py-4 blanket">
                 
                 <div className="text-center">
                     <img src={`data:image/jpg;base64, ${base64String}`} alt="imagio" width="100" className="rounded-circle" />
@@ -73,10 +73,14 @@ const base64String = window.btoa(
                        
                     </ul>
                    
-                    <div className=" buttons">
+                    <div className=" butts">
                   
-                        <button className="btn btn-outline-primary px-4"  data-toggle="modal" data-target="#exampleModalCenter"      >More Info</button>
-                        <button className="btn btn-primary px-4 ms-3">Manage User</button>
+                        <button className="btn btn-outline-primary px-4"  onClick={() => {
+                            window.location.href = `/more_info/${user._id}`
+                        }} >More Info</button>
+                        <button className="btn btn-primary px-4 ms-3" onClick={() => {
+                            window.location.href = `/subjects_view/${user._id}`
+                        }}>User's Subjects</button>
 
                       
                     </div>
