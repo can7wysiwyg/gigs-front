@@ -25,7 +25,9 @@ function UserApi() {
 
                 res.data.admin === 1 ? setIsadmin(true) : setIsadmin(false)
                 res.data.admin === 0 ? setIsUser(true) : setIsUser(false)
-                setOwner(res.data.fullname)
+                setOwner(res.data._id)
+
+            
 
 
             }

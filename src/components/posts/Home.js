@@ -130,7 +130,7 @@ const ShowOurPosts = ({ post }) => {
                
                 <div className="d-flex flex-column ml-2">
                   {" "}
-                  <span className="font-weight-bold">{person.fullname}</span>{" "}
+                  <a href={`/person_profile/${person._id}`} className="card-link">  <span className="font-weight-bold">{person.fullname}</span> </a> {" "}
                   <small className="text-primary">tutor</small>{" "}
                 </div>
               </div>
@@ -203,7 +203,7 @@ const base64String =  window.btoa(
               />
               <div className="d-flex flex-column ml-2">
                 {" "}
-                <span className="font-weight-bold">  {person.fullname}   </span>{" "}
+                <a href={`/person_profile/${person._id}`} className="card-link">   <span className="font-weight-bold">  {person.fullname}   </span> </a> {" "}
                 <small className="text-primary">{ moment(post.updatedAt).format('LLLL')} </small>{" "}
               </div>
             </div>

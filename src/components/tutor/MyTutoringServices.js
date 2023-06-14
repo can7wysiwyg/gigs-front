@@ -3,11 +3,19 @@ import { GlobalState } from "../../GlobalState";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
+import _ from "lodash"
+
+
+const pageSize = 3;
+
 
 function MyTutoringService() {
   const state = useContext(GlobalState);
   const token = state.token;
   const [subjects, setSubjects] = useState([]);
+  const [paginated, setPaginated] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   useEffect(() => {
     const getMyServices = async () => {
@@ -18,6 +26,8 @@ function MyTutoringService() {
       });
 
       setSubjects(res.data.subjects);
+      setPaginated(_(res.data.subjects).slice(0).take(pageSize).value());
+
     };
 
     getMyServices();
@@ -35,16 +45,50 @@ function MyTutoringService() {
     );
   }
 
+  const pageCount = subjects ? Math.ceil(subjects.length / pageSize) : 0;
+
+
+
+  const pages = _.range(1, pageCount + 1);
+
+
+  const pagination = (pageNo) => {
+    setCurrentPage(pageNo)
+    const startIndex = (pageNo -1) * pageSize
+    const paginate = _(subjects).slice(startIndex).take(pageSize).value()
+    setPaginated(paginate)
+
+
+  }
+
+
   return (
     <div className="container">
       <h1 style={{ textAlign: "center" }}>my tutoring subjects</h1>
       <div style={{ padding: "10px" }}>
         <Row>
-          {subjects?.map((subject, index) => (
+          {paginated?.map((subject, index) => (
             <Col key={index} sm={4} >
               <DisplayMyServices subject={subject} />
             </Col>
           ))}
+
+<nav className="d-flex justify-content-center">
+        <ul className="pagination">
+          {pages.map((page, index) => (
+            <li
+              className={
+                page === currentPage ? "page-item active" : "page-item"
+              }
+              key={index}
+            >
+            <p className="page-link" onClick={() => pagination(page)} > {page} </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+
         </Row>
       </div>
     </div>
@@ -70,7 +114,7 @@ const DisplayMyServices = ({ subject }) => {
   return (
     <>
 
-<div className="card" >
+<div className="card" style={{width: "16rem"}} >
   <div className="card-body">
     <h5 className="card-title">{subject.subjectName}</h5>
     <h6 className="card-subtitle mb-2 text-muted">MK{subject.subjectPrice}</h6>
@@ -84,7 +128,7 @@ const DisplayMyServices = ({ subject }) => {
         )}
 
     </p>
-    <a href={`/person_profile/${subject.subjectOwner}`} className="card-link">back to profile</a>
+    <a href={`/manage_subject/${subject._id}`} className="card-link">manage subject</a>
     
   </div>
 </div>
