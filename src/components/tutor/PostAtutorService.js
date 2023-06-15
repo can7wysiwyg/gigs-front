@@ -24,7 +24,7 @@ useEffect(() => {
 
 const getCats = async() => {
 
-  const res = await axios.get('/admin/show_categories')
+  const res = await axios.get('https://apigigs.onrender.com/admin/show_categories')
 
   setCategories(res.data.results);
 
@@ -40,7 +40,7 @@ getCats()
     event.preventDefault();
 
     await axios.post(
-      "/subject/create_subject",
+      "https://apigigs.onrender.com/subject/create_subject",
       { ...values },
       {
         headers: {

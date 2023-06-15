@@ -21,7 +21,7 @@ function CreateCategory() {
 
         event.preventDefault()
 
-        await axios.post("/admin/create_category", {catName}, {
+        await axios.post("https://apigigs.onrender.com/admin/create_category", {catName}, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

@@ -21,7 +21,7 @@ function SubjectsView() {
 
   useEffect(() => {
     const getPosts = async () => {
-      const res = await axios.get(`/subject/show_users/${id}`);
+      const res = await axios.get(`https://apigigs.onrender.com/subject/show_users/${id}`);
 
       setSubjects(res.data.subjects);
       setPaginated(_(res.data.subjects).slice(0).take(pageSize).value());

@@ -12,7 +12,7 @@ function DeleteUser() {
    
    const deleteUser = async() => {
 
-    await axios.delete(`/admin/delete_user/${id}`, {
+    await axios.delete(`https://apigigs.onrender.com/admin/delete_user/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

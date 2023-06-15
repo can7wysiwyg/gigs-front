@@ -12,7 +12,7 @@ function TutorDeleteSubject() {
     const handleDelete = async(event) => {
         event.preventDefault()
 
-        await axios.delete(`/subject/delete_subject/${id}`, {
+        await axios.delete(`https://apigigs.onrender.com/subject/delete_subject/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

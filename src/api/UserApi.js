@@ -18,7 +18,7 @@ function UserApi() {
         if(token) {
          
             const getUser = async() => {
-                const res = await axios.get('/auth/user', {
+                const res = await axios.get('https://apigigs.onrender.com/auth/user', {
                     headers: {Authorization: `Bearer ${token}`}
                 })
                 setIsLogged(true)

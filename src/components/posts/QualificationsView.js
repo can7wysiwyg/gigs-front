@@ -25,7 +25,7 @@ function QualificationsView() {
     useEffect(() => {
 
         const getQualis = async() => {
-            const res = await axios.get(`/qualification/show_all/${id}`)
+            const res = await axios.get(`https://apigigs.onrender.com/qualification/show_all/${id}`)
 
             setUserQualifications(res.data.owner);
 

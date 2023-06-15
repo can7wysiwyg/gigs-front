@@ -14,7 +14,7 @@ function PostSingle() {
 
     useEffect(() => {
         const getPosts = async () => {
-          const res = await axios.get(`/subject/single/${id}`);
+          const res = await axios.get(`https://apigigs.onrender.com/subject/single/${id}`);
     
           setSingle(res.data.singled);
         

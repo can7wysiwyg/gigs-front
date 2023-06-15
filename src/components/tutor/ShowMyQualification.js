@@ -14,7 +14,7 @@ function ShowMyQualification() {
 
   useEffect(() => {
     const getSingleUser = async () => {
-      const res = await axios.get("/qualification/owner_view", {
+      const res = await axios.get("https://apigigs.onrender.com/qualification/owner_view", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -18,7 +18,7 @@ function ResetPassword() {
 
         
 
-         await axios.put('/auth/reset_password', {password}, {
+         await axios.put('https://apigigs.onrender.com/auth/reset_password', {password}, {
             headers: {Authorization: `Bearer ${token}`}
          })
 

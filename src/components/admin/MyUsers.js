@@ -16,7 +16,7 @@ function MyUsers() {
   useEffect(() => {
 
     const getUsers = async() => {
-      const res = await axios.get('/auth/users')
+      const res = await axios.get('https://apigigs.onrender.com/auth/users')
       setUsers(res.data)
       setPaginated(_(res.data).slice(0).take(pageSize).value());
 

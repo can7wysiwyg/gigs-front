@@ -14,7 +14,7 @@ useEffect(() => {
 
     const getItems = async() => {
 
-        const res = await axios.get(`/subject/show_single_cat/sc?cat=${id}`)
+        const res = await axios.get(`https://apigigs.onrender.com/subject/show_single_cat/sc?cat=${id}`)
 
         setPosts(res.data.subjectsCat);
 

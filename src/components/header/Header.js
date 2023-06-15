@@ -22,7 +22,7 @@ function Header() {
 
       const getCats = async() => {
       
-        const res = await axios.get('/admin/show_categories')
+        const res = await axios.get('https://apigigs.onrender.com/admin/show_categories')
       
         setCategories(res.data.results);
       
@@ -51,7 +51,7 @@ function Header() {
 
     useEffect(() => {
       const getUser = async () => {
-        const res = await axios.get("/auth/user", {
+        const res = await axios.get("https://apigigs.onrender.com/auth/user", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -179,7 +179,18 @@ function Header() {
       const adminRoute = () => {
 
         return(
-          <Nav>         
+          <Nav>        
+           <NavItem>
+              <LinkContainer to="/my_admin">
+                <Nav.Link>
+                admin profile
+                </Nav.Link>
+                
+                </LinkContainer>
+            </NavItem>
+
+
+
                <NavItem>
               <LinkContainer to="/my_users">
                 <Nav.Link>

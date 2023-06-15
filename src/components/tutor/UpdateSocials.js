@@ -24,7 +24,7 @@ function UpdateSocials() {
     event.preventDefault();
 
     await axios.put(
-      `/user/update_socials/${id}`,
+      `https://apigigs.onrender.com/user/update_socials/${id}`,
       { ...values },
       {
         headers: {

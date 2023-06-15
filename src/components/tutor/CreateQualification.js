@@ -36,7 +36,7 @@ const handleSubmit = async (event) => {
     formData.append("tutorSpecialty3", qualificationn.tutorSpecialty3 );
     formData.append("qualificationImage", qualificationImage);
     
-    const res = await axios.post("/qualification/create_qualification", formData, {
+    const res = await axios.post("https://apigigs.onrender.com/qualification/create_qualification", formData, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

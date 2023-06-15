@@ -19,7 +19,7 @@ function MyTutoringService() {
 
   useEffect(() => {
     const getMyServices = async () => {
-      const res = await axios.get("/subject/owner_view", {
+      const res = await axios.get("https://apigigs.onrender.com/subject/owner_view", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -106,7 +106,7 @@ const DisplayMyServices = ({ subject }) => {
   const {subjectCommentary} = subject
 
   
-  const maxChars = 20
+  const maxChars = 90
 
   const shouldShowSeeMore = subjectCommentary.length > maxChars;
 

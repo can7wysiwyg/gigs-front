@@ -19,7 +19,7 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const res = await axios.post("/auth/login", { ...values });
+    const res = await axios.post("https://apigigs.onrender.com/auth/login", { ...values });
     localStorage.setItem("token", res.data.accesstoken);
     if (res.data.msg) {
      alert(res.data.msg)

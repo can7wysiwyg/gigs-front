@@ -24,7 +24,7 @@ function Home() {
 
   useEffect(() => {
     const getPosts = async () => {
-      const res = await axios.get("/subject/show_all");
+      const res = await axios.get("https://apigigs.onrender.com/subject/show_all");
 
       setPosts(res.data.subject);
       setPaginated(_(res.data.subject).slice(0).take(pageSize).value());

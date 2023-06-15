@@ -22,7 +22,7 @@ function TutorUpdateCommentary() {
 
 
 
-             await axios.put(`/subject/edit_subject/${id}`, {subjectCommentary}, {
+             await axios.put(`https://apigigs.onrender.com/subject/edit_subject/${id}`, {subjectCommentary}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

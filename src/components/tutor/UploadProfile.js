@@ -18,7 +18,7 @@ function UploadProfile() {
 
         formData.append("userImage", userImage)
 
-        await axios.put(`/user/update_profile_pic/${id}`, formData, {
+        await axios.put(`https://apigigs.onrender.com/user/update_profile_pic/${id}`, formData, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

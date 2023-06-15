@@ -32,7 +32,7 @@ function DeleteQualification() {
     const handleDelete = async(event) => {
         event.preventDefault()
 
-        await axios.delete(`/qualification/owner_delete/${id}`, {
+        await axios.delete(`https://apigigs.onrender.com/qualification/owner_delete/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

@@ -15,7 +15,7 @@ function CategoryList() {
 
         const getCats = async() => {
 
-            const res = await axios.get("/admin/show_categories", {
+            const res = await axios.get("https://apigigs.onrender.com/admin/show_categories", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -73,7 +73,7 @@ const DeleteButon = ({id}) => {
 
 useEffect(() => {
     const getPosts = async () => {
-      const res = await axios.get("/subject/show_all");
+      const res = await axios.get("https://apigigs.onrender.com/subject/show_all");
 
       setPosts(res.data.subject);
       
@@ -97,7 +97,7 @@ useEffect(() => {
 
     const deleteButton = async() => {
 
-        await axios.delete(`/admin/delete_category/${id}`, {headers: {
+        await axios.delete(`https://apigigs.onrender.com/admin/delete_category/${id}`, {headers: {
             Authorization: `Bearer ${token}`
         }})
 

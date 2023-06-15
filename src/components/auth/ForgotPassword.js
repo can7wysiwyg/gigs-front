@@ -20,7 +20,7 @@ function ForgotPassword() {
 
     const handleSubmit = async() => {
         
-        const res = await axios.post('/auth/forgot_password', {...values});
+        const res = await axios.post('https://apigigs.onrender.com/auth/forgot_password', {...values});
         if(res.data.msg) {
             alert(res.data.msg)
         } else{

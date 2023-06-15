@@ -37,7 +37,7 @@ function Register() {
 
     
 
-    const res = await axios.post("/auth/register", formData);
+    const res = await axios.post("https://apigigs.onrender.com/auth/register", formData);
 
     localStorage.setItem("firstLogin", true);
 
