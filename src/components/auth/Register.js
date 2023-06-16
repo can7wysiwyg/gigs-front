@@ -76,6 +76,8 @@ function Register() {
                 name="username"
                 value={values.username}
                 onChange={handleChange}
+                pattern=".{6,}"
+                title="username should have more than 6 characters"
                 placeholder="enter your username"
               />
             </Form.Group>
@@ -114,7 +116,8 @@ function Register() {
                 name="password"
                 value={values.password}
                 onChange={ handleChange}
-                
+                pattern=".{8,}"
+                title="password should have more than 8 characters"
                 placeholder="enter your password"
               />
             </Form.Group>

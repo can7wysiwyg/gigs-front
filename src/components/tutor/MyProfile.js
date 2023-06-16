@@ -42,7 +42,7 @@ function MyProfile() {
 
 
  
-  return <div className="col-md-6 mx-auto text-center">
+  return <div className="container mt-4 mb-4 p-4 d-flex justify-content-center body">
 
 <Card >
  <Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%", height: "100%"}} variant="top" /> 

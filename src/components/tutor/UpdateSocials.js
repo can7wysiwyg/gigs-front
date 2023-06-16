@@ -3,17 +3,20 @@ import { useParams } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import PhoneInput from "react-phone-number-input";
+import 'react-phone-number-input/style.css'
 
 function UpdateSocials() {
   const { id } = useParams();
   const state = useContext(GlobalState);
   const token = state.token;
   const [values, setValues] = useState({
-    whatsappLink: "",
     facebookLink: "",
     twitterLink: "",
     linkedInLink: "",
   });
+
+  const[whatsappLink, setWhatsAppLink] = useState()
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,9 +26,11 @@ function UpdateSocials() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    
     await axios.put(
       `https://apigigs.onrender.com/user/update_socials/${id}`,
-      { ...values },
+      {...values, whatsappLink},
+      
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,7 +38,7 @@ function UpdateSocials() {
       }
     );
 
-    window.location.href = "/my_profile";
+    window.location.href = "/view_my_socials";
   };
 
   return (
@@ -75,17 +80,12 @@ function UpdateSocials() {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicWhatsAppLink">
-                <label>
-                  *optional* write your whatsapp number like this 265882346462
-                  .. omit the + from the country code
-                </label>
-                <Form.Control
-                  type="text"
-                  name="whatsappLink"
-                  value={values.whatsappLink}
-                  onChange={handleChange}
-                  placeholder="write your whatsapp number like this 265882346462 .. omit the + from the country code"
-                />
+                
+               <PhoneInput placeholder="write your phone number"  name="whatsappLink"
+                  value={whatsappLink}
+                  onChange={setWhatsAppLink}  /> 
+
+                
               </Form.Group>
 
               <Button variant="warning" type="submit">

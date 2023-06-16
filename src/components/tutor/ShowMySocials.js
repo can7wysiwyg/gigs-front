@@ -27,14 +27,17 @@ function ShowMySocials() {
     }, [token])
 
 
+    console.log(user);
+
+
     return(<>
     <div className="col-md-6 mx-auto text-center">
     <Container>
       <ListGroup>
-    <Link to={user.facebookLink}>    <ListGroup.Item>Facebook: {user.facebookLink} </ListGroup.Item> </Link>
-    <Link to={user.twitterLink}>   <ListGroup.Item>Twitter: {user.twitterLink}</ListGroup.Item> </Link>
-    <Link to={user.linkedInLink}>   <ListGroup.Item>LinkedIn: {user.linkedInLink}</ListGroup.Item>  </Link>
-    <Link to={`https://wa.me/${user.whatsappLink}`}>  <ListGroup.Item>WhatsApp: +{user.whatsappLink}</ListGroup.Item> </Link>
+      { user.facebookLink === "" ? "" :  <Link to={user.facebookLink}>    <ListGroup.Item>Facebook: {user.facebookLink} </ListGroup.Item> </Link> }
+   { user.twitterLink === "" ? "" :  <Link to={user.twitterLink}>   <ListGroup.Item>Twitter: {user.twitterLink}</ListGroup.Item> </Link> }
+   { user.linkedInLink === "" ? "" : <Link to={user.linkedInLink}>   <ListGroup.Item>LinkedIn: {user.linkedInLink}</ListGroup.Item>  </Link> }
+   { user.whatsappLink === "" ? "" : <Link to={`https://wa.me/${user.whatsappLink}`}>  <ListGroup.Item>WhatsApp: {user.whatsappLink}</ListGroup.Item> </Link> }
 
 
 
