@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const { useEffect, useContext, useState } = require("react");
 
 
-const pageSize = 3;
+const pageSize = 8;
 
 
 function Home() {

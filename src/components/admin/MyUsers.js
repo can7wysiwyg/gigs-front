@@ -4,7 +4,7 @@ import axios from "axios";
 import _ from "lodash"
 
 
-const pageSize = 3;
+const pageSize = 8;
 
 
 function MyUsers() {

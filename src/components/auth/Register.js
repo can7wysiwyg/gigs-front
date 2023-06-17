@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import PhoneInput from "react-phone-number-input";
+import 'react-phone-number-input/style.css'
+
 
 
 function Register() {
@@ -10,9 +13,11 @@ function Register() {
     username: "",
     email: "",
     password: "",
-    phoneNumber: "",
     securityAnswer: "",
   });
+
+  const[phoneNumber, setPhoneNumber] = useState("")
+
 
   const[userImage, setUserImage] = useState("")
 
@@ -32,7 +37,7 @@ function Register() {
     formData.append("username", values.username)
     formData.append("email", values.email)
     formData.append("password", values.password)
-    formData.append("phoneNumber", values.phoneNumber)
+    formData.append("phoneNumber", phoneNumber)
     formData.append("securityAnswer", values.securityAnswer)
 
     
@@ -82,14 +87,12 @@ function Register() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicLocation">
-              <Form.Control
-                type="text"
-                name="phoneNumber"
-                value={values.phoneNumber}
-                onChange={handleChange}
-                placeholder="enter your phone number"
-              />
+            <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
+            <PhoneInput placeholder="write your phone number"  name="phoneNumber"
+                  value={phoneNumber}
+                  onChange={setPhoneNumber}  /> 
+
+              
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control

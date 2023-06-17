@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Navbar, Nav,   Container, NavItem } from 'react-bootstrap';
+import { Navbar, Nav,   Container, NavItem} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import axios from "axios";
 import { GlobalState } from "../../GlobalState";
@@ -50,16 +50,24 @@ function Header() {
 
 
     useEffect(() => {
-      const getUser = async () => {
-        const res = await axios.get("https://apigigs.onrender.com/auth/user", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+   
+      
+        const getUser = async() => {
+          const res = await axios.get("https://apigigs.onrender.com/auth/user", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+    
+          setUser(res.data); }
   
-        setUser(res.data); }
+          getUser()
 
-        getUser()
+
+      
+
+      
+    
       
 
     }, [token])
@@ -88,7 +96,7 @@ function Header() {
           </>)
 
 
-        } else if(isLogged === true) {
+        } else if(Object.keys(user).length > 15  &&   isLogged === true) {
 
           const picture = user.userImage.data.data ;
 
@@ -97,6 +105,8 @@ function Header() {
       (data, byte) => data + String.fromCharCode(byte),
       ""
     )
+
+
   );
 
 
@@ -108,7 +118,16 @@ function Header() {
           
           </>)
         }
+else if( isLogged === true ) {
+  return(<>
+  
+  <LinkContainer to="/">
+  <Navbar.Brand>tutor-finder</Navbar.Brand>
 
+  </LinkContainer>
+  
+  </>)
+}
 
       }
 
