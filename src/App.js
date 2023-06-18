@@ -38,6 +38,12 @@ import CategoryList from "./components/admin/CategoryList"
 import MoreInfo from "./components/admin/MoreInfo"
 import MyAdmin from "./components/admin/MyAdmin"
 import Footer from "./components/Footer"
+import AccountUpdateChoice from "./components/tutor/AccountUpdateChoice"
+import WhatsAppUpdate from "./components/tutor/WhatsAppUpdate"
+import FacebookUpdate from "./components/tutor/FacebookUpdate"
+import TwitterUpdate from "./components/tutor/TwitterUpdate"
+import LinkedInUpdate from "./components/tutor/LinkedInUpdate"
+import AboutUs from "./components/posts/AboutUs"
 
 
 
@@ -102,7 +108,7 @@ function App() {
           <Route path="/show_my_qualifications/:id" element={<ShowMyQualification />} />
           <Route path="/user_upload_profile/:id" element={<UploadProfile />} />
           <Route path="/manage_my_profile/:id" element={<ManageProfile /> } />
-          <Route path="/user_update_socials/:id" element={<UpdateSocials />} />
+          <Route path="/user_update_socials" element={<UpdateSocials />} />
           <Route path="/view_my_socials" element={<ShowMySocials />} />
           <Route path="/post_tutor_service" element={ <PostATutorService /> } />
           <Route path="/my_services" element={<MyTutoringService />} />
@@ -125,6 +131,12 @@ function App() {
           <Route path="/category_list" element={<CategoryList />} />
           <Route path="/more_info/:id" element={<MoreInfo />} />
           <Route path="/my_admin" element={<MyAdmin />} />
+          <Route path="/account_update" element={<AccountUpdateChoice />} />
+          <Route path="/whatsapp_update" element={<WhatsAppUpdate />} />
+          <Route path="/facebook_update" element={<FacebookUpdate />} />
+          <Route path="/twitter_update" element={<TwitterUpdate />} />
+          <Route path="/linkedin_update" element={<LinkedInUpdate />} />
+          <Route path="/about_us" element={<AboutUs />} />
           
 
           

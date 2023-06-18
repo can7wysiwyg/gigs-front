@@ -308,6 +308,14 @@ else if( isLogged === true ) {
                     <i className="fas fa-user"></i> Login ✥ Register
                   </Nav.Link>
                 </LinkContainer> )}
+
+                <LinkContainer to="/about_us">
+                
+                
+                <Nav.Link>
+                  About Us
+                </Nav.Link>
+                </LinkContainer>
               
               
             </Nav>

@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
-import { Card } from "react-bootstrap";
 
 
 function MyProfile() {
@@ -44,28 +43,32 @@ function MyProfile() {
  
   return <div className="container mt-4 mb-4 p-4 d-flex justify-content-center body">
 
-<Card >
- <Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%", height: "100%"}} variant="top" /> 
-<Card.Body>
-<Card.Title as="div">{user.fullname}</Card.Title>
-<Card.Text as="p">username: {user.username}</Card.Text>
-<Card.Text as="p">email: {user.email}</Card.Text>
-<Card.Text as="p">phone number: {user.phoneNumber}</Card.Text>
-<Card.Text as="p">security answer: {user.securityAnswer}</Card.Text>
-<Card.Link href={`/show_my_qualifications/${user._id}`} className="d-block p-2" >view my qualifications </Card.Link>
-<Card.Link href={`/manage_my_profile/${user._id}`} className="d-block p-2" >manage my profile </Card.Link>
-<Card.Link href={"/view_my_socials"} className="d-block p-2" >my social media accounts </Card.Link>
+<div className="card" style={{width: "18rem"}}>
+  <img className="card-img-top" src={`data:image/jpg;base64, ${base64String}`} alt={user.fullname} />
+  <div className="card-body">
+    <h5 className="card-title"> {user.fullname}  </h5>
+    <p className="card-text"> {user.username}  </p>
+  </div>
+  <ul className="list-group list-group-flush">
+    <li className="list-group-item">{user.email}  </li>
+    <li className="list-group-item">  {user.phoneNumber}  </li>
+    <li className="list-group-item">  {user.securityAnswer} </li>
+  </ul>
+  <div className="card-body">
+  <p>  <a href={`/show_my_qualifications/${user._id}`} className="card-link">my qualifications</a> </p>
+   <p> <a href={`/manage_my_profile/${user._id}`} className="card-link"> manage my profile </a> </p>
+   <p> <a href={"/view_my_socials"} className="card-link"> my social media accounts  </a> </p>
 
 
-</Card.Body>
-
-</Card>
-
+  </div>
+</div>
 
 
 
 
 
+
+    
 
   </div>;
 }

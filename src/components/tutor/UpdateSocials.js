@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
@@ -7,9 +7,10 @@ import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 
 function UpdateSocials() {
-  const { id } = useParams();
+
   const state = useContext(GlobalState);
   const token = state.token;
+  const[owner] = state.userApi.owner
   const [values, setValues] = useState({
     facebookLink: "",
     twitterLink: "",
@@ -28,7 +29,7 @@ function UpdateSocials() {
 
     
     await axios.put(
-      `https://apigigs.onrender.com/user/update_socials/${id}`,
+      `https://apigigs.onrender.com/user/update_socials/${owner}`,
       {...values, whatsappLink},
       
       {
@@ -55,7 +56,7 @@ function UpdateSocials() {
                   name="facebookLink"
                   value={values.facebookLink}
                   onChange={handleChange}
-                  placeholder="copy and paste your facebook profile link"
+                  placeholder=" paste your facebook profile link"
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicTwitterLink">
@@ -65,7 +66,7 @@ function UpdateSocials() {
                   name="twitterLink"
                   value={values.twitterLink}
                   onChange={handleChange}
-                  placeholder="copy and paste your twitter profile link"
+                  placeholder="paste your twitter profile link"
                 />
               </Form.Group>
 
@@ -76,12 +77,12 @@ function UpdateSocials() {
                   name="linkedInLink"
                   value={values.linkedInLink}
                   onChange={handleChange}
-                  placeholder="copy and paste your LinkedIn profile link"
+                  placeholder=" paste your LinkedIn profile link"
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicWhatsAppLink">
                 
-               <PhoneInput placeholder="write your phone number"  name="whatsappLink"
+               <PhoneInput placeholder="write your whatsapp number"  name="whatsappLink"
                   value={whatsappLink}
                   onChange={setWhatsAppLink}  /> 
 
